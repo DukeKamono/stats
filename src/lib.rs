@@ -24,7 +24,11 @@ pub type StatFn = fn(&[f64]) -> Option<f64>;
 /// assert_eq!(Some(0.0), mean(&[-1.0, 1.0]));
 /// ```
 pub fn mean(nums: &[f64]) -> Option<f64> {
-    unimplemented!("no mean yet")
+	//let mut nums = nums.to_owned();
+	//for i in range(0.0, nums.len()) {
+		
+	//}
+	unimplemented!("no mean yet")
 }
 
 /// Population standard deviation of input values. The
