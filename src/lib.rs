@@ -40,7 +40,7 @@ pub type StatFn = fn(&[f64]) -> Option<f64>;
 /// assert_eq!(Some(-1.6), mean(&[-1.0, 1.0, -7.0, 2.0, -3.0]));
 /// ```
 pub fn mean(nums: &[f64]) -> Option<f64> {
-    if nums == &[] {
+    if nums == [] {
         Some(0.0)
     } else {
         let mut x: f64 = 0.0;
@@ -81,7 +81,7 @@ pub fn mean(nums: &[f64]) -> Option<f64> {
 /// assert_eq!(Some(28.25), stddev(&[1.0, 1.0, -5.0, -10.0]));
 /// ```
 pub fn stddev(nums: &[f64]) -> Option<f64> {
-    if nums == &[] {
+    if nums == [] {
         None
     } else {
         Some(summation_power(nums, mean(nums).unwrap()) / (nums.len() - 1) as f64)
@@ -124,7 +124,7 @@ pub fn median(nums: &[f64]) -> Option<f64> {
     // https://users.rust-lang.org/t/how-to-sort-a-vec-of-floats/2838/2
     nums.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
-    if nums == &[] {
+    if nums == [] {
         None
     } else {
         let length = nums.len();
@@ -171,7 +171,7 @@ pub fn median(nums: &[f64]) -> Option<f64> {
 /// assert_eq!(Some(8.0), l2(&[-3.0, 4.0, -3.0, 5.0, 1.0, -2.0]));
 /// ```
 pub fn l2(nums: &[f64]) -> Option<f64> {
-    if nums == &[] {
+    if nums == [] {
         Some(0.0)
     } else {
         Some(summation_power(nums, 0.0).sqrt())
