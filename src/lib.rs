@@ -40,19 +40,19 @@ pub type StatFn = fn(&[f64]) -> Option<f64>;
 /// assert_eq!(Some(-1.6), mean(&[-1.0, 1.0, -7.0, 2.0, -3.0]));
 /// ```
 pub fn mean(nums: &[f64]) -> Option<f64> {
-	if nums == &[] {
-		Some(0.0)
-	} else {
-		let mut x: f64 = 0.0;
-		let mut y: f64 = 0.0;
-		for i in nums {
-			x += 1.0;
-			y += i;
-		};
-		
-		let z: f64 = y / x;
-		Some(z)
-	}
+    if nums == &[] {
+        Some(0.0)
+    } else {
+        let mut x: f64 = 0.0;
+        let mut y: f64 = 0.0;
+        for i in nums {
+            x += 1.0;
+            y += i;
+        }
+
+        let z: f64 = y / x;
+        Some(z)
+    }
 }
 
 /// Population standard deviation of input values. The
@@ -82,10 +82,10 @@ pub fn mean(nums: &[f64]) -> Option<f64> {
 /// ```
 pub fn stddev(nums: &[f64]) -> Option<f64> {
     if nums == &[] {
-		None
-	} else {
-		Some(summation_power(nums, mean(nums).unwrap()) / (nums.len() - 1) as f64)
-	}
+        None
+    } else {
+        Some(summation_power(nums, mean(nums).unwrap()) / (nums.len() - 1) as f64)
+    }
 }
 
 /// Median value of input values, taking the value closer
@@ -125,20 +125,20 @@ pub fn median(nums: &[f64]) -> Option<f64> {
     nums.sort_by(|a, b| a.partial_cmp(b).unwrap());
 
     if nums == &[] {
-		None
-	} else {
-		let length = nums.len();
-		let offset = length - 1;
-		if length % 2 == 0 {
-			let first = nums[offset / 2];
-			//From the notes above the examples we are not dividing by 2.
-			//let second = nums[(offset / 2) + 1];
-			//Some((first + second) / 2.0)
-			Some(first)
-		} else {
-			Some(nums[offset / 2])
-		}
-	}
+        None
+    } else {
+        let length = nums.len();
+        let offset = length - 1;
+        if length % 2 == 0 {
+            let first = nums[offset / 2];
+            //From the notes above the examples we are not dividing by 2.
+            //let second = nums[(offset / 2) + 1];
+            //Some((first + second) / 2.0)
+            Some(first)
+        } else {
+            Some(nums[offset / 2])
+        }
+    }
 }
 
 /// L2 norm (Euclidean norm) of input values. The L2
@@ -172,10 +172,10 @@ pub fn median(nums: &[f64]) -> Option<f64> {
 /// ```
 pub fn l2(nums: &[f64]) -> Option<f64> {
     if nums == &[] {
-		Some(0.0)
-	} else {
-		Some(summation_power(nums, 0.0).sqrt())
-	}
+        Some(0.0)
+    } else {
+        Some(summation_power(nums, 0.0).sqrt())
+    }
 }
 
 /// This takes each array value, minuses it from the offset,
@@ -200,13 +200,13 @@ pub fn l2(nums: &[f64]) -> Option<f64> {
 /// assert_eq!(29.0, summation_power(&[-3.0, 4.0], 2.0));
 /// ```
 pub fn summation_power(nums: &[f64], offset: f64) -> f64 {
-	//took this to_owned form the median section
-	let mut nums = nums.to_owned();
-	let mut total: f64 = 0.0;
-	
-	for i in &mut nums {
-		total += (*i - offset).powf(2.0);
-	}
-	
-	total
+    //took this to_owned form the median section
+    let mut nums = nums.to_owned();
+    let mut total: f64 = 0.0;
+
+    for i in &mut nums {
+        total += (*i - offset).powf(2.0);
+    }
+
+    total
 }
